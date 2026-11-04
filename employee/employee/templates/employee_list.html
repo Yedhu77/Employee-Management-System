@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Employee List</h2>
+
+<a href="/add/" class="btn btn-primary mb-3">Add Employee</a>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Email</th>
+        <th>Salary</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for employee in employees %}
+
+    <tr>
+
+        <td>
+            {% if employee.profile_image %}
+                <img src="{{ employee.profile_image.url }}" width="80" height="80">
+            {% else %}
+                No Image
+            {% endif %}
+        </td>
+
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.department }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.salary }}</td>
+
+        <td>
+
+            <a href="/employee/{{ employee.id }}/" class="btn btn-info">View</a>
+
+            <a href="/update/{{ employee.id }}/" class="btn btn-warning">Edit</a>
+
+            <a href="/delete/{{ employee.id }}/" class="btn btn-danger">Delete</a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Employee Details</h2>
+
+<div class="card p-3">
+
+    {% if employee.profile_image %}
+        <img src="{{ employee.profile_image.url }}" width="150" height="150">
+    {% endif %}
+
+    <h3>{{ employee.name }}</h3>
+
+    <p><strong>Age:</strong> {{ employee.age }}</p>
+
+    <p><strong>Email:</strong> {{ employee.email }}</p>
+
+    <p><strong>Phone:</strong> {{ employee.phone }}</p>
+
+    <p><strong>Department:</strong> {{ employee.department }}</p>
+
+    <p><strong>Salary:</strong> {{ employee.salary }}</p>
+
+    <p><strong>Address:</strong> {{ employee.address }}</p>
+
+    <a href="/employees/" class="btn btn-primary">Back</a>
+
+    <a href="/employee/update/{{ employee.id }}/" class="btn btn-warning">
+        Edit
+    </a>
+
+</div>
+
+{% endblock %}
